@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Botao from "./Botao";
+import  Botao  from "./Botao";
 
 interface ItemCarrosselProps {
   children?: any;
@@ -23,9 +23,9 @@ export default function ItemCarrossel(props: ItemCarrosselProps) {
         {props.descricao}
       </div>
       <div className="flex justify-around gap-3">
-        <Botao nomeBotao="Comprar" onClick={async function (): Promise<void> {
-  // Implemente a lógica da função aqui
-}}/>
+        <Botao nomeBotao={"Comprar"} onClick={function (): Promise<void> {
+          throw new Error("Function not implemented.");
+        } } />
       </div>
     </div>
   );

@@ -1,13 +1,13 @@
 export interface ISendResponse {
-    nomeCompleto: string
+    nome: string
     email: string
     telefone: string
-    dataEntrega: string
+    entrega: string
     body: string
     id: string
     status: string
     deletedAt?: any
-    tamanho: number
+    tamanho: string
     // arquivo: File;
     createdAt: string
     updateAt: string

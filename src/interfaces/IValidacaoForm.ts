@@ -1,9 +1,9 @@
 export interface IValidacaoForm {
-    nomeCompleto: string
+    nome: string
     email: string
     telefone: string
-    dataEntrega: string
+    entrega: string
     body: string
-    tamanho: number
+    tamanho: string
     // arquivo: File;
 }

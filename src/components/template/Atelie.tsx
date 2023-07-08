@@ -19,6 +19,7 @@ export default function Atelie(props: AtelieProps) {
       <ImagemResponsiva
         imagem={props.imagem}
         className={props.inverter ? "sm:rotate-6" : "sm:-rotate-6"}
+        priority={true}
       />
       <div
         className={`flex flex-col gap-y-6 sm:w-[350px]

@@ -8,32 +8,35 @@ type Props = {
   name: string;
   id: string
   className?: string
+  htmlFor: string
+  label: string
 }
 
-export function DateTimePicker({ name, id, className }: Props) {
+export function DateTimePicker({ name, id, className, htmlFor, label }: Props) {
 
   const { control } = useFormContext()
 
   return (
-    <Controller
+    <label htmlFor={htmlFor}>
+      {label}
+      <Controller
       name={name}
       control={control}
       defaultValue={new Date()}
       render={({ field: { onChange, value } }) => (
-      <DatePicker
-        showTimeSelect
-        dateFormat="Pp"
-        locale="pt-BR"
-        selected={new Date(value)}
-        id={id}
-        onChange={(date: Date) => onChange(date.toISOString())}
-        className={className}
-        onKeyDown={(e) => {
-          e.preventDefault()
-        }}
-      />       
-      )}
-    />
+        <DatePicker
+          showTimeSelect
+          dateFormat="Pp"
+          locale="pt-BR"
+          selected={new Date(value)}
+          id={id}
+          onChange={(date: Date) => onChange(date.toISOString())}
+          className={className}
+          onKeyDown={(e) => {
+            e.preventDefault();
+          } } />
+      )} />
+      </label>
   )
 }
 

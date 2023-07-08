@@ -3,6 +3,7 @@ import Image, { StaticImageData } from "next/image"
 interface ImagemResponsivaProps {
     imagem: StaticImageData    
     className?: string
+    priority:boolean
 }
 
 export default function ImagemResponsiva(props: ImagemResponsivaProps) {
