@@ -1,12 +1,12 @@
-import React, { createRef, useState, useEffect, forwardRef, useRef   } from "react";
+import React, { useState, useEffect, useRef  } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { DateTimePicker } from "./DateTime";
 import { FormEdit }  from "./FormEdit";
 import { ValidacaoResolvida } from "../validacao/validacao";
 import { IValidacaoForm } from "../../../interfaces/IValidacaoForm";
-import Botao  from "../comum/Botao";
 import { MailServices } from "@/services";
 import { PatternFormat } from "react-number-format";
+import Botao  from "../comum/Botao";
 
 const Form = () => {
   const formMethods = useForm<IValidacaoForm>({ resolver: ValidacaoResolvida });
@@ -21,10 +21,15 @@ const Form = () => {
   } = formMethods;
   async function validandoForm(values: IValidacaoForm): Promise<void> {
     values.tamanho = valueTamanho;
+
     const { status } = await MailServices.SendEmail(values);
     if (status === 201) {
-      console.log("esta passando por aqui", values);
-      reset();
+      try {
+        console.log('Dados do formulário enviados para o backend');
+        reset();
+      } catch (error) {
+        console.error('Erro ao enviar dados do formulário para o backend', error);
+      }
     }
   }
 
@@ -43,7 +48,6 @@ const Form = () => {
   const ReactNumberFormat = React.forwardRef((props, ref) => (
     <PatternFormat {...props}  format="(##) #####-####" className="input-selecionado" id="telefone" name="telefone" mask=" " getInputRef={ref} />
   ));
-
 
   return (
     <FormProvider {...formMethods}>

@@ -11,6 +11,7 @@ export default function ImagemResponsiva(props: ImagemResponsivaProps) {
         <Image
             src={props.imagem}
             alt="Imagem"
+            priority={props.priority}
             className={`
                 w-[350px] h-[365px]
                 sm:w-[200px] sm:h-[330px]
